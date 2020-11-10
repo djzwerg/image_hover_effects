@@ -119,9 +119,14 @@ function image_hover_effects_field_attach_view_alter(&$output, $context) {
 
     // Add 'class' setting to the attributes of all children elements.
     foreach (element_children($element) as $delta) {
-      // Can only add classes to wrapping link not to image because image does
-      // not support the :after pseudo selector we use for overlays
-      $element[$delta]['#path']['options']['attributes'] = array('class' => $classes, 'data-hover' => $hover_content);
+      if (!empty($element[$delta]['#path']['options'])) {
+        // Can only add classes to wrapping link not to image because image does
+        // not support the :after pseudo selector we use for overlays
+        $element[$delta]['#path']['options']['attributes'] = [
+          'class' => $classes,
+          'data-hover' => $hover_content
+        ];
+      }
     }
   }
 }
