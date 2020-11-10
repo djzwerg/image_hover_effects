@@ -108,9 +108,9 @@ function image_hover_effects_field_attach_view_alter(&$output, $context) {
 
     if (isset($settings['image_hover_effects']) && $settings['image_hover_effects']) {
       $hover_content = token_replace($settings['image_hover_effects_data'], array($token_type => $context['entity']), array('sanitize' => FALSE));
-      $effect_class = drupal_html_class('ihe-overlay--' . $settings['image_hover_effects']);
+      $effect_class = backdrop_html_class('ihe-overlay--' . $settings['image_hover_effects']);
       $classes = array('ihe-overlay', $effect_class);
-      drupal_add_css(drupal_get_path('module', 'image_hover_effects') . '/css/image-hover-effects.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
+      backdrop_add_css(backdrop_get_path('module', 'image_hover_effects') . '/css/image-hover-effects.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
     }
     else {
       // Move on to the next child if 'class' setting is not available.
